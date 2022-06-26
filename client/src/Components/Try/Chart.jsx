@@ -37,7 +37,7 @@ class Chart extends React.Component {
           size="small"
           variant="contained"
           onClick={this.hitChart}
-          disabled={this.props.btnState === -1 ? true : false}
+          disabled={this.props.btnState === 0 || this.props.btnState === -1 ? true : false}
         >
           {" "}
           Chart

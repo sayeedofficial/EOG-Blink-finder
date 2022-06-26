@@ -13,6 +13,7 @@ toast.configure();
 function Try() {
   const [file, setFile] = useState();
   const [isFilePicked, setIsFilePicked] = useState(false);
+  const [isFileSent,setIsFileSent] = useState(false);
 
   const saveFile = (e) => {
     setFile(e.target.files[0]);
@@ -20,6 +21,7 @@ function Try() {
   };
 
   const uploadFile = async (e) => {
+    setIsFileSent(true)
     const formData = new FormData();
     formData.append("file", file);
     
@@ -56,7 +58,7 @@ function Try() {
 
         <br />
       </div>
-      <BlinkRate fileState= {isFilePicked} />
+      <BlinkRate fileState= {isFilePicked} fileSent = {isFileSent}  />
 
     </div>
   );
