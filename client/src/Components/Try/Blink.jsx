@@ -38,7 +38,7 @@ class BlinkRate extends React.Component {
 
         <br />
         <Button
-          disabled={this.props.fileSent === false ? true : false}
+          disabled={this.props.fileSent === false || this.state.count === -1 ? true : false}
           startIcon={<CircleIcon />}
           color="error"
           size="small"

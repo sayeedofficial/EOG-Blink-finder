@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
+const fse = require("fs-extra")
 const bodyParser = require("body-parser");
 const fileupload = require("express-fileupload");
 const { PythonShell } = require("python-shell");
@@ -37,15 +38,15 @@ app.get("/", (req, res) => {
 
 
 
-app.get("/blinkcount",(req,res)=>{
-   console.log(`Request was sent to ${req.url}`)
-   let pyshell = new PythonShell("./Core/blink.py");
-   pyshell.send("hello");
-   pyshell.on("message",function(message){
-       console.log(message)
-       res.status(200).send(message.toString())
-   })
-   pyshell.end(function (err,code,signal) {
+app.get("/blinkcount", (req, res) => {
+  console.log(`Request was sent to ${req.url}`)
+  let pyshell = new PythonShell("./Core/blink.py");
+  pyshell.send("hello");
+  pyshell.on("message", function (message) {
+    console.log(message)
+    res.status(200).send(message.toString())
+  })
+  pyshell.end(function (err, code, signal) {
     if (err) throw err;
     console.log('The exit code was: ' + code);
     console.log('The exit signal was: ' + signal);
@@ -61,6 +62,7 @@ app.get("/getchart", (req, res) => {
 
 //upload file from client
 app.post("/upload", (req, res) => {
+  fse.emptydirSync("./files")
   console.log(`Request was sent to ${req.url}`)
   const newpath = __dirname + "/files/";
   const file = req.files.file;
@@ -79,7 +81,7 @@ app.post("/upload", (req, res) => {
 app.post("/disease", (req, res) => {
   console.log(`Request was sent to ${req.url}`)
   let pyshell = new PythonShell("./Core/disease.py");
-  
+
   const {
     age,
     gender,
@@ -110,7 +112,7 @@ app.post("/disease", (req, res) => {
     console.log(message);
     res.status(200).send(message)
   });
-  pyshell.end(function (err,code,signal) {
+  pyshell.end(function (err, code, signal) {
     if (err) throw err;
     console.log('The exit code was: ' + code);
     console.log('The exit signal was: ' + signal);
