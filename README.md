@@ -41,7 +41,7 @@ This Application Helps You to Find Number of Blinks Made Per Minute
 #### Step 2
 
 ```bash
-  git clone https://github.com/sayeedofficial/mp
+  git clone https://gitlab.com/sayeedofficial/major-project.git
 ```
 
 #### Step 3
