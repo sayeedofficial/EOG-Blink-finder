@@ -7,7 +7,7 @@ This Application Helps You to Find Number of Blinks Made Per Minute
 
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 
-# Libraries and SDKs Version
+## Libraries and SDKs Version
 
 ### Python
 
